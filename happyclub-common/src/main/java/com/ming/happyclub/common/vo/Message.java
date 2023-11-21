@@ -1,5 +1,6 @@
-package com.ming.happyclub.common.vo.response;
+package com.ming.happyclub.common.vo;
 
+import com.ming.happyclub.common.enums.ResponseStatusEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +38,39 @@ public class Message<T>{
     @ApiModelProperty(value = "响应体", required = true)
     private T body;
 
+
+    /**
+     * @description: 成功的消息 可自定义成功返回码
+     * @date: 2023/11/17
+     */
+    public static <T> Message success(ResponseStatusEnum responseStatusEnum, T t) {
+        return out(responseStatusEnum.getCode(), responseStatusEnum.getDesc(),t);
+    }
+
+    /**
+     * @description: 成功的消息
+     * @date: 2023/11/17
+     */
+    public static <T> Message success(T t) {
+        return out(ResponseStatusEnum.SUCCESS.getCode(), ResponseStatusEnum.SUCCESS.getDesc(),t);
+    }
+
+    /**
+     * @description: 失败的消息 可自定义失败返回码
+     * @date: 2023/11/17
+     */
+    // 失败的消息
+    public static Message error(ResponseStatusEnum responseStatusEnum, String message) {
+        return out(responseStatusEnum.getCode(),message,null);
+    }
+
+    /**
+     * @description: 失败的消息
+     * @date: 2023/11/17
+     */
+    public static Message error(String message){
+        return out(ResponseStatusEnum.ERROR.getCode(), message,null);
+    }
 
     /**
      * @description: Message封装体

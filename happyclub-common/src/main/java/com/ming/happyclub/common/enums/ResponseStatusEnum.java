@@ -7,7 +7,7 @@ import lombok.Getter;
  * @date 2023/11/17
  */
 @Getter
-public enum ResponseEnum {
+public enum ResponseStatusEnum {
     SUCCESS(200,"请求成功"),
     ERROR(1000,"请求失败"),
     ERROR_EXCEPTION(1001,"代码异常");
@@ -15,18 +15,18 @@ public enum ResponseEnum {
     private final int code;
     private final String desc;
 
-    ResponseEnum(int code, String desc) {
+    ResponseStatusEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public static ResponseEnum formCode(int code) {
-        for (ResponseEnum responseEnum : ResponseEnum.values()) {
-            if (responseEnum.getCode() == code) {
-                return responseEnum;
+    public static ResponseStatusEnum formCode(int code) {
+        for (ResponseStatusEnum responseStatusEnum : ResponseStatusEnum.values()) {
+            if (responseStatusEnum.getCode() == code) {
+                return responseStatusEnum;
             }
         }
-        return ResponseEnum.ERROR;
+        return ResponseStatusEnum.ERROR;
     }
 
 }

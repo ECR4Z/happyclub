@@ -1,0 +1,13 @@
+spring:
+  # 配置应用名称
+  application:
+    name: happyclub-web
+
+  # 引入配置文件,不推荐使用profiles.active (Spring Boot 2.4为了提升对Kubernetes的支持 将 spring.profiles 作废了)
+  config:
+    import: application-config.yml
+
+server:
+  # 配置上下文,访问的时候需要在端口号后面加上上下文,例如:localhost:8888/api-happyclub-web
+  servlet:
+    context-path: /api-happyclub-web

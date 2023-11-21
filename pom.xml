@@ -18,6 +18,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>happyclub-common</module>
+        <module>happyclub-web</module>
     </modules>
 
     <properties>
@@ -75,6 +76,12 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,33 @@
+server:
+  # 配置端口
+  port: 8888
+
+log:
+  # 配置日志路径
+  path: logs
+
+env:
+  # 配置日志环境名称
+  name: dev
+
+logging:
+  level:
+    com.ming.happyclub.web.*: debug # 指定具体包下的日志输出级别
+
+knife4j:
+  enable: true
+  setting:
+    language: zh-CN
+  openapi:
+    title: 快乐部
+    description: 一个基于 Spring Boot、MyBatis-Plus、MySQL、Redis、ElasticSearch、MongoDB、Docker、RabbitMQ 等技术栈实现的社区系统，采用主流的互联网技术架构、全新的UI设计、支持一键源码部署，拥有完整的文章&教程发布/搜索/评论/统计流程等，代码完全开源，没有任何二次封装，是一个非常适合二次开发/实战的现代化社区项目👍 。
+    version: 1.0.0
+    concat:
+      - ECRZ
+    email: himing4@163.com
+    group:
+      web:
+        group-name: 后台接口分组
+        api-rule: package
+        api-rule-resources:
+          - com.ming.happyclub.web.controller
