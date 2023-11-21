@@ -1,0 +1,84 @@
+package ${packageName}.controller;
+
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${packageName}.${moduleName}.domain.entity.${upperClassName}Entity;
+import com.ming.happyclub.common.vo.Message;
+import ${packageName}.service.I${upperClassName}Service;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * @author ${author}
+ * @date ${datetime}
+ * @description ${comment}
+ */
+@Slf4j
+@RestController
+@RequestMapping("/${lowerClassName}")
+@Api(value = "${lowerClassName}", tags = "${comment}管理模块")
+public class ${upperClassName}Controller {
+
+    @Autowired
+    private I${upperClassName}Service ${lowerClassName}Service;
+
+    /**
+     * 分页查询
+     * @param page 分页对象
+     * @param ${lowerClassName}Entity ${comment}
+     * @return Result
+     */
+    @ApiOperation(value = "分页查询", notes = "分页查询")
+    @GetMapping("/page")
+    public Message get${upperClassName}Page(Page page, ${upperClassName}Entity ${lowerClassName}Entity) {
+        return Message.success(${lowerClassName}Service.page(page, Wrappers.query(${lowerClassName}Entity)));
+    }
+
+    /**
+     * 通过id查询${comment}
+     * @param id id
+     * @return Result
+     */
+    @ApiOperation(value = "通过id查询", notes = "通过id查询")
+    @GetMapping("/{id}")
+    public Message getById(@PathVariable("id") Integer id) {
+        return Message.success(${lowerClassName}Service.getById(id));
+    }
+
+    /**
+     * 新增${comment}
+     * @param ${lowerClassName}Entity ${comment}
+     * @return Result
+     */
+    @ApiOperation(value = "新增${comment}", notes = "新增${comment}")
+    @PostMapping
+    public Message save(@RequestBody ${upperClassName}Entity ${lowerClassName}Entity) {
+        return Message.success(${lowerClassName}Service.save(${lowerClassName}Entity));
+    }
+
+    /**
+     * 修改${comment}
+     * @param ${lowerClassName}Entity ${comment}
+     * @return Result
+     */
+    @ApiOperation(value = "修改${comment}", notes = "修改${comment}")
+    @PutMapping
+    public Message updateById(@RequestBody ${upperClassName}Entity ${lowerClassName}Entity) {
+        return Message.success(${lowerClassName}Service.updateById(${lowerClassName}Entity));
+    }
+
+    /**
+     * 通过id删除${comment}
+     * @param id id
+     * @return Result
+     */
+    @ApiOperation(value = "通过id删除${comment}", notes = "通过id删除${comment}")
+    @DeleteMapping("/{id}")
+    public Message removeById(@PathVariable Integer id) {
+        return Message.success(${lowerClassName}Service.removeById(id));
+    }
+}
+

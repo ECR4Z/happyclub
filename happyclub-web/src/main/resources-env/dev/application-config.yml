@@ -25,9 +25,3 @@ knife4j:
     concat:
       - ECRZ
     email: himing4@163.com
-    group:
-      web:
-        group-name: 后台接口分组
-        api-rule: package
-        api-rule-resources:
-          - com.ming.happyclub.web.controller

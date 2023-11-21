@@ -1,6 +1,6 @@
 package com.ming.happyclub.web.service;
 
-import com.ming.happyclub.common.handle.exception.UnifyException;
+import com.ming.happyclub.common.vo.Message;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,5 +13,9 @@ import org.springframework.stereotype.Service;
 public class TestService {
     public String test(int num) {
        return String.valueOf(1 / num);
+    }
+
+    public Message res(){
+        return Message.success("");
     }
 }

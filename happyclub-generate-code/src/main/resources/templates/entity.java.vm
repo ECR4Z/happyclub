@@ -1,0 +1,34 @@
+package ${packageName}.${moduleName}.domain.entity;
+#set($list=["id","createBy","createTime", "updateBy", "updateTime", "deleteFlag"])
+import com.ming.scaffold.common.base.BaseEntity;
+import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.EqualsAndHashCode;
+
+/**
+ * @author ${author}
+ * @date ${datetime}
+ * @description ${comment}
+ */
+@Data
+@TableName("${tableName}")
+@ApiModel(value = "${comment}", description = "${comment}对象 ${lowerClassName}")
+@EqualsAndHashCode(callSuper = true)
+public class ${upperClassName}Entity extends BaseEntity {
+
+#foreach ($column in $columns)
+    ##    排除父类字段
+    #if($list.contains($column.javaLowerAttrName))
+    #else
+
+        /**
+         * $column.column_comment
+         */
+        @ApiModelProperty(value = "$column.column_comment")
+        private $column.javaAttrType $column.javaLowerAttrName;
+    #end
+#end
+}

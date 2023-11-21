@@ -10,7 +10,7 @@ import ch.qos.logback.core.AppenderBase;
  * @Replenishment: 使用邮箱推送Error日志信息
  */
 public class AlarmUtil extends AppenderBase<ILoggingEvent> {
-    private static final long INTERVAL = 10 * 1000 * 60;
+    private static final long INTERVAL = (long) 10 * 1000 * 60;
     private long lastAlarmTime = 0;
 
     @Override

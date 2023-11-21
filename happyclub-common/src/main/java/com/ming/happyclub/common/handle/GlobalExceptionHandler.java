@@ -25,10 +25,26 @@ public class GlobalExceptionHandler{
     public Message handleException(Exception e){
         if(e instanceof UnifyException){
             // 处理自定义异常类 业务逻辑
-            log.warn(String.format("触发自定义异常:%s",e.getMessage()));
+            log.info(String.format("触发自定义异常:%s",e.getMessage()));
             return Message.error(ResponseStatusEnum.ERROR_EXCEPTION,e.getMessage());
         }
-        log.warn(String.format("业务异常,异常信息如下:%s",e.getMessage()));
+
+        // 1.提示信息
+        String message = e.getMessage();
+        if(e.getStackTrace().length == 0){
+            log.info("业务异常,无堆栈信息");
+            return Message.error(message);
+        }
+
+        // 2.报错代码位置
+        StackTraceElement stackTraceElement = e.getStackTrace()[0];
+        String location = stackTraceElement.getClassName() +
+                "." +
+                stackTraceElement.getMethodName() +
+                ":" +
+                stackTraceElement.getLineNumber();
+
+        log.info(String.format("业务异常,异常信息如下:%s,报错位置:%s",message, location));
         return Message.error(e.getMessage());
     }
 }
