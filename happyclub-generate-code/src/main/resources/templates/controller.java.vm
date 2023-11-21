@@ -8,13 +8,14 @@ import ${packageName}.service.I${upperClassName}Service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import javax.annotation.Resource;
 
 /**
- * @author ${author}
+ * @description: ${comment}
  * @date ${datetime}
- * @description ${comment}
+ * @version 1.0
+ * @Replenishment: TODO
  */
 @Slf4j
 @RestController
@@ -22,14 +23,15 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "${lowerClassName}", tags = "${comment}管理模块")
 public class ${upperClassName}Controller {
 
-    @Autowired
+    @Resource
     private I${upperClassName}Service ${lowerClassName}Service;
 
     /**
-     * 分页查询
+     * @description: 分页查询
      * @param page 分页对象
      * @param ${lowerClassName}Entity ${comment}
-     * @return Result
+     * @return: Message
+     * @date: ${datetime}
      */
     @ApiOperation(value = "分页查询", notes = "分页查询")
     @GetMapping("/page")
@@ -38,9 +40,10 @@ public class ${upperClassName}Controller {
     }
 
     /**
-     * 通过id查询${comment}
+     * @description: 通过id查询${comment}
      * @param id id
-     * @return Result
+     * @return: Message
+     * @date: ${datetime}
      */
     @ApiOperation(value = "通过id查询", notes = "通过id查询")
     @GetMapping("/{id}")
@@ -49,9 +52,10 @@ public class ${upperClassName}Controller {
     }
 
     /**
-     * 新增${comment}
+     * @description: 新增${comment}
      * @param ${lowerClassName}Entity ${comment}
-     * @return Result
+     * @return: Message
+     * @date: ${datetime}
      */
     @ApiOperation(value = "新增${comment}", notes = "新增${comment}")
     @PostMapping
@@ -60,9 +64,10 @@ public class ${upperClassName}Controller {
     }
 
     /**
-     * 修改${comment}
+     * @description: 修改${comment}
      * @param ${lowerClassName}Entity ${comment}
-     * @return Result
+     * @return: Message
+     * @date: ${datetime}
      */
     @ApiOperation(value = "修改${comment}", notes = "修改${comment}")
     @PutMapping
@@ -71,9 +76,10 @@ public class ${upperClassName}Controller {
     }
 
     /**
-     * 通过id删除${comment}
+     * @description: 通过id删除${comment}
      * @param id id
-     * @return Result
+     * @return: Message
+     * @date: ${datetime}
      */
     @ApiOperation(value = "通过id删除${comment}", notes = "通过id删除${comment}")
     @DeleteMapping("/{id}")

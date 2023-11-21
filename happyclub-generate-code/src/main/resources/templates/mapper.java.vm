@@ -5,9 +5,10 @@ import ${packageName}.${moduleName}.domain.entity.${upperClassName}Entity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author ${author}
+ * @description: ${comment}
  * @date ${datetime}
- * @description ${comment}
+ * @version 1.0
+ * @Replenishment: TODO
  */
 @Mapper
 public interface ${upperClassName}Mapper extends BaseMapper<${upperClassName}Entity> {

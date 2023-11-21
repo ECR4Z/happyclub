@@ -49,22 +49,22 @@ public class BaseGenerate {
     /**
      * 全局配置
      */
-    protected static GlobalConfig.Builder globalConfig() {
+    protected static GlobalConfig.Builder globalConfig(Class<?> cls) {
         return new GlobalConfig.Builder()
                 .author("ming")
                 .enableSwagger()
                 .dateType(DateType.TIME_PACK)
                 .disableOpenDir()
-                .outputDir(absPath(BaseGenerate.class))
+                .outputDir(absPath(cls))
                 .commentDate("yyyy-MM-dd HH:mm:ss");
     }
 
     /**
      * 包配置
      */
-    protected static PackageConfig.Builder packageConfig() {
+    protected static PackageConfig.Builder packageConfig(String packageName) {
         return new PackageConfig.Builder()
-                .parent(FastAutoGenerator.PARENT_PATH)
+                .parent(packageName)
                 .entity("mbg.domain.entity")
                 .service("service")
                 .serviceImpl("service.impl")

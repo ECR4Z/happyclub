@@ -67,7 +67,7 @@ public class FastAutoGenerator {
      * @param map
      * @param tablePrefixArray
      */
-    private static void setAttr(String tableName, DataSourceConfig dataSourceConfig, Map<String, Object> map, String[] tablePrefixArray) {
+    private static void setAttr(String packageName, String moduleName,String tableName, DataSourceConfig dataSourceConfig, Map<String, Object> map, String[] tablePrefixArray) {
         List<Map<String, Object>> columns = new ArrayList<>();
 
         // 获取表信息sql
@@ -115,8 +115,8 @@ public class FastAutoGenerator {
 
         map.put(MBGEnum.COLUMNS.getKey(), columns);
         map.put(MBGEnum.DATETIME.getKey(), DateUtil.now());
-        map.put(MBGEnum.PACKAGENAME.getKey(), PACKAGE_NAME);
-        map.put(MBGEnum.MODULENAME.getKey(), MODULE_NAME);
+        map.put(MBGEnum.PACKAGENAME.getKey(), packageName);
+        map.put(MBGEnum.MODULENAME.getKey(), moduleName);
     }
 
 
@@ -145,13 +145,22 @@ public class FastAutoGenerator {
             .build();
 
     /**
-     * 开始生成代码
+     * @description: 开始生成代码
+     * @param: packageName 包名
+     * @param: moduleName 模块名
+     * @param: tableName 表名
+     * @param: dataSourceConfig 数据库配置
+     * @date: 2023/11/21
      */
-    public static void run(String packageName,String moduleName,String tableName) {
-        AutoGenerator generator = new AutoGenerator(DATA_SOURCE_CONFIG);
+    public static void run(String packageName,
+                           String moduleName,
+                           String tableName,
+                           DataSourceConfig dataSourceConfig,
+                           Class<?> cls) {
+        AutoGenerator generator = new AutoGenerator(dataSourceConfig);
 
         StrategyConfig strategyConfig = strategyConfig()
-                .addInclude(TABLE_NAME)
+                .addInclude(tableName)
                 .build();
 
         strategyConfig
@@ -163,15 +172,15 @@ public class FastAutoGenerator {
 
 
         generator.strategy(strategyConfig);
-        generator.global(globalConfig().build());
-        generator.packageInfo(packageConfig().build());
+        generator.global(globalConfig(cls).build());
+        generator.packageInfo(packageConfig(packageName).build());
         generator.template(templateConfig().build());
 
 
         // 6 设置自定义属性
         Map<String, Object> map = new HashMap<>();
 
-        setAttr(TABLE_NAME, DATA_SOURCE_CONFIG, map, new String[] {""});
+        setAttr(packageName,moduleName,tableName, dataSourceConfig, map, new String[] {""});
 
         generator.injection(injectionConfig().customMap(map).build());
 
@@ -180,6 +189,6 @@ public class FastAutoGenerator {
     }
 
     public static void main(String[] args) {
-        run(PACKAGE_NAME,MODULE_NAME,TABLE_NAME);
+        run(PACKAGE_NAME,MODULE_NAME,TABLE_NAME,DATA_SOURCE_CONFIG, FastAutoGenerator.class);
     }
 }

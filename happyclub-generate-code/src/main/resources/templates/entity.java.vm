@@ -1,6 +1,6 @@
 package ${packageName}.${moduleName}.domain.entity;
 #set($list=["id","createBy","createTime", "updateBy", "updateTime", "deleteFlag"])
-import com.ming.scaffold.common.base.BaseEntity;
+import com.ming.happyclub.generate.code.mbg.base.BaseEntity;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,10 +9,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.EqualsAndHashCode;
 
 /**
- * @author ${author}
+ * @description: ${comment}
  * @date ${datetime}
- * @description ${comment}
+ * @version 1.0
+ * @Replenishment: TODO
  */
+
 @Data
 @TableName("${tableName}")
 @ApiModel(value = "${comment}", description = "${comment}对象 ${lowerClassName}")

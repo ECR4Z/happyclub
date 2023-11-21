@@ -7,9 +7,10 @@ import ${packageName}.service.I${upperClassName}Service;
 import org.springframework.stereotype.Service;
 
 /**
- * @author ${author}
+ * @description: ${comment}
  * @date ${datetime}
- * @description ${comment}
+ * @version 1.0
+ * @Replenishment: TODO
  */
 @Service
 public class ${upperClassName}ServiceImpl extends ServiceImpl<${upperClassName}Mapper, ${upperClassName}Entity> implements I${upperClassName}Service {

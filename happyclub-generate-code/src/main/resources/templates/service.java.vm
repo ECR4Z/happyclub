@@ -4,9 +4,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import ${packageName}.${moduleName}.domain.entity.${upperClassName}Entity;
 
 /**
- * @author ${author}
+ * @description: ${comment}
  * @date ${datetime}
- * @description ${comment}
+ * @version 1.0
+ * @Replenishment: TODO
  */
 public interface I${upperClassName}Service extends IService<${upperClassName}Entity> {
 

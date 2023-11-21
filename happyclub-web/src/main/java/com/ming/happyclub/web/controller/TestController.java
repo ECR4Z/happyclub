@@ -26,6 +26,7 @@ public class TestController {
 
     @GetMapping("/exception")
     @ApiOperation(value = "测试",notes = "测试备注")
+
     public String test(@ApiParam(value = "num") @RequestParam(value = "num") int num){
         return testService.test(num);
     }
